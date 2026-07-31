@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://mo1capdce6nb"]
+
+[ext_resource type="Script" uid="uid://cnp1ag4cxexij" path="res://scenes/levels/test_level.gd" id="1_fr1um"]
+[ext_resource type="Script" uid="uid://c2dvnndv2ax0v" path="res://scenes/characters/movment/base_player.gd" id="1_jbqir"]
+[ext_resource type="Script" uid="uid://doqo6yk6nvjt" path="res://scenes/levels/spring_arm_3d.gd" id="2_yautc"]
+[ext_resource type="PackedScene" uid="uid://dwcwlbykrgtq5" path="res://mechanics/message_area/area/message_area.tscn" id="4_v45ci"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbqir"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_yautc"]
+sky_material = SubResource("ProceduralSkyMaterial_jbqir")
+
+[sub_resource type="Environment" id="Environment_fr1um"]
+background_mode = 2
+sky = SubResource("Sky_yautc")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yautc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fr1um"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yautc"]
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yautc"]
+height = 1.0
+
+[node name="Test_level" type="Node3D"]
+script = ExtResource("1_fr1um")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fr1um")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -2.1855694e-06, 1, 0, -50, -4.371139e-08, -25, 0, 25)
+rotation_order = 0
+use_collision = true
+depth = 0.01
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0173569, 0)
+script = ExtResource("1_jbqir")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_yautc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_fr1um")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
+spring_length = 4.0
+script = ExtResource("2_yautc")
+mouse_sensitivity = 0.003
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.40593928, 0.9139001, 0, -0.9139001, -0.40593928, -5.2092257, 12.718269, 0)
+light_color = Color(0.9976943, 1, 0.9065385, 1)
+shadow_enabled = true
+shadow_blur = 6.253
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("CylinderMesh_yautc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_yautc")
+
+[node name="MessageArea" parent="StaticBody3D" instance=ExtResource("4_v45ci")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="."]

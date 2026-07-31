@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://irsgxcsip6rc"]
+
+[ext_resource type="Texture2D" uid="uid://dpug4wj5m5nyq" path="res://mechanics/tabletop/ui/unfocused_game_in_tab.png" id="1_l1onq"]
+[ext_resource type="Texture2D" uid="uid://b6ambnhxyd4co" path="res://mechanics/tabletop/ui/selected_game_in_tab.png" id="2_xe85a"]
+[ext_resource type="Texture2D" uid="uid://csrse80g4noxv" path="res://mechanics/tabletop/ui/unselected_game_in_tab.png" id="3_efwm8"]
+[ext_resource type="Script" uid="uid://bowe43ug8hce2" path="res://mechanics/tabletop/ui/scripts/game_selector_button.gd" id="4_kq4og"]
+[ext_resource type="Texture2D" uid="uid://ct6b100wicyl2" path="res://mechanics/tabletop/games/icons/fool.png" id="5_7di81"]
+[ext_resource type="FontFile" uid="uid://cg0n8u64wrbky" path="res://assets/ui/fonts/Ankona Kursive.ttf" id="6_k0e8k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_riyxu"]
+font = ExtResource("6_k0e8k")
+font_size = 15
+outline_size = 2
+outline_color = Color(0.078431375, 0.08235294, 0.09019608, 1)
+shadow_size = 2
+shadow_color = Color(0.2784314, 0.20784314, 0.12941177, 1)
+shadow_offset = Vector2(2, 1)
+
+[node name="Game" type="TextureButton"]
+custom_minimum_size = Vector2(133, 37)
+offset_right = 133.0
+offset_bottom = 37.0
+texture_normal = ExtResource("1_l1onq")
+texture_pressed = ExtResource("2_xe85a")
+texture_hover = ExtResource("2_xe85a")
+texture_disabled = ExtResource("3_efwm8")
+texture_focused = ExtResource("2_xe85a")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_kq4og")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.47007585, 0.47007585, 0.47007585, 1)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 32.0
+offset_bottom = 31.0
+mouse_filter = 2
+texture = ExtResource("5_7di81")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+auto_translate_mode = 1
+modulate = Color(0.48570347, 0.48570353, 0.48570347, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -11.5
+offset_right = 24.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Дурачок"
+label_settings = SubResource("LabelSettings_riyxu")
