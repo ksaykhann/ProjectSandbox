@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwcwlbykrgtq5"]
+
+[ext_resource type="Script" uid="uid://i1sdh2hho6mk" path="res://mechanics/message_area/area/message_area.gd" id="1_olw0m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ecm34"]
+
+[node name="MessageArea" type="Area3D"]
+script = ExtResource("1_olw0m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ecm34")
+debug_color = Color(0, 0, 0, 1)

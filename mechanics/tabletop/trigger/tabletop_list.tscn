@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxkk6mpsjddu0"]
+
+[ext_resource type="Script" uid="uid://cyobbs02p5wmq" path="res://mechanics/tabletop/ui/scripts/tabletop_list.gd" id="1_swu3y"]
+[ext_resource type="Texture2D" uid="uid://by1p7etdpbxkg" path="res://mechanics/tabletop/ui/game_tab.png" id="2_ywia5"]
+[ext_resource type="Texture2D" uid="uid://jg53vexg1a71" path="res://mechanics/tabletop/ui/exit.png" id="3_ywia5"]
+[ext_resource type="Texture2D" uid="uid://cn48xg70d0nus" path="res://mechanics/tabletop/ui/exit_focused.png" id="4_eaqay"]
+[ext_resource type="Script" uid="uid://dd0sbqavuyqv" path="res://scripts/context_texture_button.gd" id="4_nsxoo"]
+[ext_resource type="PackedScene" uid="uid://cjr6f03eyoujd" path="res://scenes/ui/button/button.tscn" id="6_a7802"]
+
+[node name="TabletopList" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_swu3y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -176.5
+offset_right = 248.0
+offset_bottom = 176.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_ywia5")
+
+[node name="ExitButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 25.5
+offset_right = -20.0
+offset_bottom = 54.5
+grow_horizontal = 0
+texture_normal = ExtResource("3_ywia5")
+texture_pressed = ExtResource("4_eaqay")
+texture_hover = ExtResource("4_eaqay")
+texture_focused = ExtResource("4_eaqay")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_nsxoo")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"
+
+[node name="Preview" type="TextureRect" parent="TextureRect"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 0
+offset_left = 169.0
+offset_top = 75.5
+offset_right = 469.0
+offset_bottom = 275.5
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(133, 272)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -111.0
+offset_right = -97.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameList" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(133, 272)
+layout_mode = 2
+
+[node name="StartGame" parent="." instance=ExtResource("6_a7802")]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 116.0
+offset_right = 136.0
+offset_bottom = 153.0
+text = "Начать игру"
