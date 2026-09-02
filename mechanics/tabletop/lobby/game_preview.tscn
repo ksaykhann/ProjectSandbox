@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://sqsvjxqwt4b2"]
+
+[ext_resource type="Texture2D" uid="uid://dh4patfxwnf7k" path="res://mechanics/tabletop/lobby/ui/base_button.png" id="1_i7nla"]
+[ext_resource type="Script" uid="uid://dpd38agejfwa8" path="res://mechanics/tabletop/lobby/game_preview.gd" id="1_l33fw"]
+[ext_resource type="Texture2D" uid="uid://cc8at6sji380d" path="res://mechanics/tabletop/lobby/ui/placeholder_button.png" id="2_l33fw"]
+[ext_resource type="Texture2D" uid="uid://cevu7iuelrldb" path="res://mechanics/tabletop/lobby/ui/focused_button.png" id="3_dncuf"]
+[ext_resource type="Texture2D" uid="uid://c0qvd6b7ayklx" path="res://mechanics/tabletop/lobby/ui/disabled_button.png" id="4_34aey"]
+[ext_resource type="Script" uid="uid://dd0sbqavuyqv" path="res://scripts/context_texture_button.gd" id="5_mac62"]
+[ext_resource type="Texture2D" uid="uid://ey1vev8ktmwt" path="res://mechanics/tabletop/lobby/ui/accept_button.png" id="6_2pgv7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02xyt"]
+font_size = 20
+font_color = Color(0.7030074, 0.47272652, 0.2234765, 1)
+outline_size = 2
+outline_color = Color(0.35531268, 0.18113843, 0.07487809, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.7529412)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rb3ch"]
+font_size = 12
+font_color = Color(0.601223, 0.601223, 0.60122293, 1)
+outline_size = 1
+outline_color = Color(0.033853278, 0.033853278, 0.033853274, 1)
+
+[node name="GamePreview" type="Control"]
+custom_minimum_size = Vector2(580, 120)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -572.0
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l33fw")
+game_name = "Дурень"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(190, 120)
+layout_mode = 2
+expand_mode = 1
+
+[node name="GameInfo" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+
+[node name="GameName" type="Label" parent="HBoxContainer/GameInfo"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 92.0
+offset_bottom = 29.0
+text = "НАЗВАНИЕ"
+label_settings = SubResource("LabelSettings_02xyt")
+
+[node name="GameInfo" type="Label" parent="HBoxContainer/GameInfo"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 44.0
+offset_right = 129.0
+offset_bottom = 81.0
+text = "Краткое описание
+игры"
+label_settings = SubResource("LabelSettings_rb3ch")
+
+[node name="Buttons" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="StartButton" type="TextureButton" parent="HBoxContainer/Buttons"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 75.0
+offset_bottom = 75.0
+texture_normal = ExtResource("1_i7nla")
+texture_pressed = ExtResource("2_l33fw")
+texture_hover = ExtResource("3_dncuf")
+texture_disabled = ExtResource("4_34aey")
+texture_focused = ExtResource("3_dncuf")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_mac62")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"
+
+[node name="Label" type="Label" parent="HBoxContainer/Buttons/StartButton"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 68.0
+offset_bottom = 31.0
+text = "Начать"
+
+[node name="FavouriteGame" type="TextureButton" parent="HBoxContainer/Buttons"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 35.0
+offset_right = 137.0
+offset_bottom = 75.0
+texture_normal = ExtResource("6_2pgv7")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_mac62")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"

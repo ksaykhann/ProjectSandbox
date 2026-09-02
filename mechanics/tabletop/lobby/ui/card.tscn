@@ -1,0 +1,174 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6g3gm1qt2o5v"]
+
+[ext_resource type="Script" uid="uid://l76ta5u36lvq" path="res://mechanics/tabletop/games/fool/ui/card.gd" id="1_uttqx"]
+[ext_resource type="Texture2D" uid="uid://wb22i62faf10" path="res://mechanics/tabletop/card_games_asset/empty_card.png" id="2_8lj40"]
+[ext_resource type="Texture2D" uid="uid://b030cpkfd5451" path="res://mechanics/tabletop/card_games_asset/hearts.png" id="3_dxth2"]
+[ext_resource type="Texture2D" uid="uid://bfxubsdpi5lfa" path="res://mechanics/tabletop/card_games_asset/hideded_card.png" id="4_qppxw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_paoup"]
+font_color = Color(1, 0, 0.12156863, 1)
+outline_size = 2
+outline_color = Color(0.28529516, 0.005454974, 0.0062633147, 1)
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1052.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uttqx")
+rank = "4"
+suit = ExtResource("3_dxth2")
+
+[node name="White" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8lj40")
+expand_mode = 1
+
+[node name="TopSide" type="Control" parent="White"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 75.0
+
+[node name="SuitContainer" type="GridContainer" parent="White/TopSide"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 64.0
+offset_bottom = 122.0
+theme_override_constants/h_separation = 2
+columns = 3
+
+[node name="0" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="1" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+texture = ExtResource("3_dxth2")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="5" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="6" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="7" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="8" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="9" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="10" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="11" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="12" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="13" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="14" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="15" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="16" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+texture = ExtResource("3_dxth2")
+expand_mode = 1
+flip_v = true
+
+[node name="17" type="TextureRect" parent="White/TopSide/SuitContainer"]
+custom_minimum_size = Vector2(15.5, 15.5)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="White"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 27.0
+text = "2"
+label_settings = SubResource("LabelSettings_paoup")
+
+[node name="TextureRect" type="TextureRect" parent="White"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 30.0
+offset_right = 20.0
+offset_bottom = 40.0
+texture = ExtResource("3_dxth2")
+expand_mode = 1
+
+[node name="Hided" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qppxw")
+expand_mode = 1

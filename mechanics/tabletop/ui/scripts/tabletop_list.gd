@@ -1,10 +1,13 @@
 extends WindowUI
+class_name TableTopList
+
 
 @onready var container := $ScrollContainer/GameList
 @onready var preview_texture := $TextureRect/Preview
 @onready var exit_button := $TextureRect/ExitButton
 @onready var start_btn := $StartGame
 
+var player_ref: BasePlayer
 var games: Array[String]
 var icon_path: String = "res://mechanics/tabletop/games/icons/"
 var preview_path: String = "res://mechanics/tabletop/games/preview/"
@@ -38,6 +41,8 @@ func _create_game_list() -> void:
 
 
 func _on_start_pressed() -> void:
+	var data_to_save = DataManager.new()
+	data_to_save.save_data(player_ref)
 	get_tree().change_scene_to_file(game_path)
 	
 

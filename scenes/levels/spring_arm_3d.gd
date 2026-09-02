@@ -24,3 +24,7 @@ func camera_rotating(event: InputEvent) -> void:
 			mouse_bottom_limit)
 		# Вращение камеры по горизонтали
 		rotation.y -= event.relative.x * mouse_sensitivity
+
+func _exit_tree() -> void:
+	var data: DataManager = DataManager.new()
+	data.save_data(get_parent())

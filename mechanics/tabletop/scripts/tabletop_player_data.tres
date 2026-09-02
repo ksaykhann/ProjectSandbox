@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TabletopPlayerInfo" load_steps=2 format=3 uid="uid://uh6cecldbfdg"]
+
+[ext_resource type="Script" uid="uid://bnp4pfpflmve3" path="res://mechanics/tabletop/scripts/tabletop_player_info.gd" id="1_l0q0c"]
+
+[resource]
+script = ExtResource("1_l0q0c")
+metadata/_custom_type_script = "uid://bnp4pfpflmve3"

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://drj8fe72sr8k8"]
+[gd_scene load_steps=7 format=3 uid="uid://drj8fe72sr8k8"]
 
+[ext_resource type="Script" uid="uid://qn4p52pnpgi2" path="res://mechanics/tabletop/games/fool/ui/game.gd" id="1_1tcmr"]
 [ext_resource type="Texture2D" uid="uid://4xrni005u7s5" path="res://mechanics/tabletop/card_games_asset/card_games_table.png" id="1_hmhtd"]
+[ext_resource type="Texture2D" uid="uid://pccqxegc4fsc" path="res://mechanics/tabletop/lobby/ui/quit_button.png" id="2_q3lrm"]
+[ext_resource type="Script" uid="uid://cr37meh6ssrc5" path="res://mechanics/tabletop/games/fool/quit.gd" id="3_1tcmr"]
+[ext_resource type="PackedScene" uid="uid://c6g3gm1qt2o5v" path="res://mechanics/tabletop/lobby/ui/card.tscn" id="5_5tpea"]
+[ext_resource type="Texture2D" uid="uid://b3jwmgsee6n0c" path="res://mechanics/tabletop/card_games_asset/spades.png" id="6_1gb21"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -9,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1tcmr")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -30,3 +36,36 @@ offset_bottom = 550.0
 grow_horizontal = 2
 texture = ExtResource("1_hmhtd")
 expand_mode = 1
+
+[node name="Quit" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 0
+offset_left = 1086.0
+offset_top = 8.0
+offset_right = 1136.0
+offset_bottom = 62.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.98385817, 0.17714904, 0.33985585, 1)
+theme_override_colors/icon_pressed_color = Color(0.3515629, 0.3515629, 0.35156286, 1)
+theme_override_colors/icon_hover_color = Color(0.9843137, 0.1764706, 0.34117648, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
+icon = ExtResource("2_q3lrm")
+expand_icon = true
+script = ExtResource("3_1tcmr")
+metadata/_custom_type_script = "uid://brqnl45gs1vuo"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 372.0
+offset_right = 830.0
+offset_bottom = 522.0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Card" parent="HBoxContainer" instance=ExtResource("5_5tpea")]
+layout_mode = 2
+rank = "9"
+suit = ExtResource("6_1gb21")
