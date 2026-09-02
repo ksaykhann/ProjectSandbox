@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WorldPlayerData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/world_player_data.gd" id="1_tgu6t"]
+
+[resource]
+script = ExtResource("1_tgu6t")
+player_pos = Vector3(-0.060974788, 1.000942, 2.1067135)
+camera_pos = Vector3(-0.060974788, 1.000942, 2.1067135)
+camera_rot = Vector3(-0.17453292, -28.910982, 0)

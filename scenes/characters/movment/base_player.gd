@@ -1,9 +1,14 @@
 extends CharacterBody3D
+class_name BasePlayer
+
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @onready var camera_spring_arm: SpringArm3D = $SpringArm3D
 
+func _ready() -> void:
+	var data: DataManager = DataManager.new()
+	data.load_player_data(self)
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
@@ -30,4 +35,3 @@ func movement(delta: float) -> void:
 
 func get_camera_position() -> Vector3:
 	return camera_spring_arm.global_position
-	

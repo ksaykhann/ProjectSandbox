@@ -9,8 +9,10 @@ var start_pos: Vector2
 var stop_pos: Vector2
 var timer: Timer
 var texture_path: String
-var parent
 var animate: bool = true
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func set_text(text: String) -> void:
 	label.text = text
@@ -23,9 +25,17 @@ func set_stop_pos(pos: Vector2) -> void:
 	
 func set_size_bound() -> void:
 	var x = 20
-	for i in range(label.text.length()):
-		x += label.get_character_bounds(i).size.x
-	var y = label.get_character_bounds(0).size.y
+	var y = label.get_character_bounds(0).size.y * label.get_line_count()
+	
+	for line in label.text.split("\n"):
+		var tmp = 20
+		for i in range(line.length()):
+			tmp += label.get_character_bounds(i).size.x
+		if tmp > x:
+			x = tmp
+		
+	
+	
 	size = Vector2(x, y)
 
 func set_texture(path: String) -> void:
@@ -41,34 +51,34 @@ func build_message(text: String, pos: Variant):
 	if pos is Message.TYPE:
 		match pos:
 			message.POS.TOPRIGHT:
-				var x = get_window().size.x * 0.98 - size.x
-				var y = (get_window().size.y * 0.1 - size.y)
+				var x = get_window().size.x - size.x - 10
+				var y = 10
 				set_start_pos(Vector2(x, y - size.y))
 				set_stop_pos(Vector2(x, y))
 			message.POS.BOTRIGHT:
-				var x = get_window().size.x * 0.98 - size.x
-				var y = (get_window().size.y * 0.9 + size.y)
-				set_start_pos(Vector2(x, y + size.y))
+				var x = get_window().size.x - size.x - 10
+				var y = get_window().size.y - 10
+				set_start_pos(Vector2(x, y))
 				set_stop_pos(Vector2(x, y - size.y))
 			message.POS.TOPLEFT:
-				var x = get_window().size.x * 0.02
-				var y = (get_window().size.y * 0.1 - size.y)
+				var x = 10
+				var y = 10
 				set_start_pos(Vector2(x, y - size.y))
 				set_stop_pos(Vector2(x, y))
 			message.POS.BOTLEFT:
-				var x = get_window().size.x * 0.02
-				var y = (get_window().size.y * 0.9 + size.y)
-				set_start_pos(Vector2(x, y + size.y))
+				var x = 10
+				var y = get_window().size.y - 10
+				set_start_pos(Vector2(x, y))
 				set_stop_pos(Vector2(x, y - size.y))
 			message.POS.TOPCENTER:
 				var x = (get_window().size.x - size.x)* 0.5
-				var y = (get_window().size.y * 0.1 - size.y)
+				var y = 10
 				set_start_pos(Vector2(x, y - size.y))
 				set_stop_pos(Vector2(x, y))
 			message.POS.BOTCENTER:
 				var x = (get_window().size.x - size.x) * 0.5
-				var y = (get_window().size.y * 0.9 + size.y)
-				set_start_pos(Vector2(x, y + size.y))
+				var y = get_window().size.y - 10
+				set_start_pos(Vector2(x, y))
 				set_stop_pos(Vector2(x, y - size.y))
 			
 	if pos is Vector3:
@@ -79,16 +89,17 @@ func build_message(text: String, pos: Variant):
 func show_message() -> void:
 	if animate:
 		position = start_pos
-		var tween = get_tree().create_tween()
+		var tween = get_parent().create_tween()
 		tween.tween_property(self, 'position', stop_pos, 0.5)
 		timer = Timer.new()
+		timer.process_mode = Node.PROCESS_MODE_ALWAYS
 		add_child(timer)
 		timer.start(5)
 		timer.timeout.connect(dead)
 
 func dead() -> void:
 	if animate:
-		var tween = get_tree().create_tween()
+		var tween = get_parent().create_tween()
 		tween.tween_property(self, 'position', start_pos, 0.4)
 		await tween.finished
 	queue_free()

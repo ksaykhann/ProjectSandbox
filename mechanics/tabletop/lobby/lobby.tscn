@@ -1,0 +1,593 @@
+[gd_scene load_steps=29 format=3 uid="uid://bs58dmmmgvgly"]
+
+[ext_resource type="Texture2D" uid="uid://d1wp8tawaaxu1" path="res://mechanics/tabletop/lobby/ui/main_panel.png" id="1_4oi15"]
+[ext_resource type="Texture2D" uid="uid://c5b2y3hrbp25k" path="res://mechanics/tabletop/lobby/ui/avatars/human_player.png" id="1_h1ouy"]
+[ext_resource type="Script" uid="uid://b3itqsx0wbqc8" path="res://mechanics/tabletop/lobby/tabletop_lobby.gd" id="1_thfuh"]
+[ext_resource type="Script" uid="uid://bspt4yfs40b84" path="res://mechanics/tabletop/lobby/scripts/exp_progress_bar.gd" id="2_4u0fk"]
+[ext_resource type="Texture2D" uid="uid://pccqxegc4fsc" path="res://mechanics/tabletop/lobby/ui/quit_button.png" id="2_thfuh"]
+[ext_resource type="Script" uid="uid://brqnl45gs1vuo" path="res://scripts/context_button.gd" id="4_thfuh"]
+[ext_resource type="Texture2D" uid="uid://dftb2fyqc3lak" path="res://mechanics/tabletop/lobby/ui/ui-sidebar-250x414.png" id="5_ncluf"]
+[ext_resource type="Script" uid="uid://cwxuhhgiij1j8" path="res://mechanics/tabletop/lobby/player_info.gd" id="6_8tx4l"]
+[ext_resource type="Texture2D" uid="uid://ba3u1dow3aqsm" path="res://mechanics/tabletop/lobby/ui/ui-player-info-193x109.png" id="6_27ec4"]
+[ext_resource type="Texture2D" uid="uid://de11eilo1q12p" path="res://mechanics/tabletop/lobby/ui/coins_icon.png" id="7_xxe1g"]
+[ext_resource type="Texture2D" uid="uid://b86gq0frorcov" path="res://mechanics/tabletop/lobby/ui/crystalls_icon.png" id="8_8tx4l"]
+[ext_resource type="Texture2D" uid="uid://dh4patfxwnf7k" path="res://mechanics/tabletop/lobby/ui/base_button.png" id="9_xjvdf"]
+[ext_resource type="Texture2D" uid="uid://cc8at6sji380d" path="res://mechanics/tabletop/lobby/ui/placeholder_button.png" id="10_7b160"]
+[ext_resource type="Texture2D" uid="uid://cevu7iuelrldb" path="res://mechanics/tabletop/lobby/ui/focused_button.png" id="11_7q30x"]
+[ext_resource type="Texture2D" uid="uid://c0qvd6b7ayklx" path="res://mechanics/tabletop/lobby/ui/disabled_button.png" id="12_8k0mi"]
+[ext_resource type="Script" uid="uid://dd0sbqavuyqv" path="res://scripts/context_texture_button.gd" id="13_1cu4x"]
+[ext_resource type="Texture2D" uid="uid://c4easq2j6j08f" path="res://mechanics/tabletop/lobby/ui/game_icon.png" id="14_a00qw"]
+[ext_resource type="Texture2D" uid="uid://do6sd63mwqed7" path="res://mechanics/tabletop/lobby/ui/profile_icon.png" id="15_6014c"]
+[ext_resource type="Texture2D" uid="uid://d2b508wdmepat" path="res://mechanics/tabletop/lobby/ui/inventory_icon.png" id="16_btwcw"]
+[ext_resource type="Texture2D" uid="uid://bfox7hog6kqfe" path="res://mechanics/tabletop/lobby/ui/achivments_icon.png" id="17_fef5x"]
+[ext_resource type="Texture2D" uid="uid://t1k2f5ebm6lr" path="res://mechanics/tabletop/lobby/ui/settings_icon.png" id="18_2oa54"]
+[ext_resource type="Texture2D" uid="uid://qxmmmhfpb8bl" path="res://mechanics/tabletop/lobby/ui/ui-content-frame-664x477.png" id="21_27ec4"]
+[ext_resource type="PackedScene" uid="uid://sqsvjxqwt4b2" path="res://mechanics/tabletop/lobby/game_preview.tscn" id="22_xxe1g"]
+[ext_resource type="Texture2D" uid="uid://dlseduaxisv5b" path="res://mechanics/tabletop/games/preview/fool.jpg" id="23_8tx4l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8tx4l"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_4u0fk"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_ott5g"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_6py34"]
+font_size = 24
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_thfuh")
+metadata/_custom_type_script = "uid://b10po2v8kp7tq"
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4oi15")
+
+[node name="ToolBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_top = 11.0
+offset_right = -9.0
+offset_bottom = 71.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Quit" type="Button" parent="ToolBar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.98385817, 0.17714904, 0.33985585, 1)
+theme_override_colors/icon_pressed_color = Color(0.3515629, 0.3515629, 0.35156286, 1)
+theme_override_colors/icon_hover_color = Color(0.9843137, 0.1764706, 0.34117648, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
+icon = ExtResource("2_thfuh")
+expand_icon = true
+script = ExtResource("4_thfuh")
+metadata/_custom_type_script = "uid://brqnl45gs1vuo"
+
+[node name="Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 75.0
+offset_top = 75.0
+offset_right = 325.0
+offset_bottom = 489.0
+
+[node name="Panel" type="TextureRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ncluf")
+
+[node name="PlayerInfo" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 19.0
+offset_right = 220.0
+offset_bottom = 128.0
+script = ExtResource("6_8tx4l")
+
+[node name="Panel" type="TextureRect" parent="Menu/PlayerInfo"]
+self_modulate = Color(2.441, 2.441, 2.441, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_27ec4")
+
+[node name="Avatar" type="TextureRect" parent="Menu/PlayerInfo"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 57.0
+offset_bottom = 59.0
+texture = ExtResource("1_h1ouy")
+expand_mode = 1
+
+[node name="PlayerName" type="Label" parent="Menu/PlayerInfo"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 10.0
+offset_right = 137.0
+offset_bottom = 33.0
+text = "Искатель"
+label_settings = SubResource("LabelSettings_8tx4l")
+
+[node name="LevelRank" type="ColorRect" parent="Menu/PlayerInfo"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 8.0
+offset_right = 174.0
+offset_bottom = 33.0
+color = Color(0.3557966, 0.18189958, 0.05380238, 1)
+
+[node name="Label" type="Label" parent="Menu/PlayerInfo/LevelRank"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="LevelInfo" type="Control" parent="Menu/PlayerInfo"]
+anchors_preset = 0
+offset_left = 63.0
+offset_top = 31.0
+offset_right = 185.0
+offset_bottom = 71.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/PlayerInfo/LevelInfo"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 18.0
+
+[node name="Label" type="Label" parent="Menu/PlayerInfo/LevelInfo/HBoxContainer"]
+layout_mode = 2
+text = "Уровень "
+label_settings = SubResource("LabelSettings_4u0fk")
+
+[node name="PlayerLevel" type="Label" parent="Menu/PlayerInfo/LevelInfo/HBoxContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_4u0fk")
+
+[node name="ExpInfo" type="HBoxContainer" parent="Menu/PlayerInfo/LevelInfo"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 21.0
+offset_right = 122.0
+offset_bottom = 35.0
+theme_override_constants/separation = 2
+
+[node name="ExpProgressBar" type="ProgressBar" parent="Menu/PlayerInfo/LevelInfo/ExpInfo"]
+clip_contents = true
+custom_minimum_size = Vector2(80, 10)
+layout_mode = 2
+size_flags_vertical = 4
+value = 20.0
+show_percentage = false
+script = ExtResource("2_4u0fk")
+
+[node name="CurrentExp" type="Label" parent="Menu/PlayerInfo/LevelInfo/ExpInfo"]
+layout_mode = 2
+text = "20"
+label_settings = SubResource("LabelSettings_ott5g")
+
+[node name="Separation" type="Label" parent="Menu/PlayerInfo/LevelInfo/ExpInfo"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_ott5g")
+
+[node name="MaxExp" type="Label" parent="Menu/PlayerInfo/LevelInfo/ExpInfo"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_ott5g")
+
+[node name="PlayerMoney" type="HBoxContainer" parent="Menu/PlayerInfo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3.5
+offset_top = -28.0
+offset_right = 87.5
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Money" type="HBoxContainer" parent="Menu/PlayerInfo/PlayerMoney"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Menu/PlayerInfo/PlayerMoney/Money"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("7_xxe1g")
+expand_mode = 1
+
+[node name="Value" type="Label" parent="Menu/PlayerInfo/PlayerMoney/Money"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "1000"
+
+[node name="Money2" type="HBoxContainer" parent="Menu/PlayerInfo/PlayerMoney"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Menu/PlayerInfo/PlayerMoney/Money2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+texture = ExtResource("8_8tx4l")
+expand_mode = 1
+
+[node name="Value" type="Label" parent="Menu/PlayerInfo/PlayerMoney/Money2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "1000"
+
+[node name="ButtonMenu" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 160.0
+offset_right = 240.0
+offset_bottom = 378.0
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Menu/ButtonMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game" type="TextureButton" parent="Menu/ButtonMenu/ButtonContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture_normal = ExtResource("9_xjvdf")
+texture_pressed = ExtResource("10_7b160")
+texture_hover = ExtResource("11_7q30x")
+texture_disabled = ExtResource("12_8k0mi")
+texture_focused = ExtResource("11_7q30x")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("13_1cu4x")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"
+
+[node name="Text" type="Label" parent="Menu/ButtonMenu/ButtonContainer/Game"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -11.5
+offset_right = 103.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Игры"
+
+[node name="Icon" type="TextureRect" parent="Menu/ButtonMenu/ButtonContainer/Game"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 7.5
+offset_right = 50.0
+offset_bottom = 32.5
+mouse_filter = 2
+texture = ExtResource("14_a00qw")
+expand_mode = 1
+
+[node name="Profile" type="TextureButton" parent="Menu/ButtonMenu/ButtonContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture_normal = ExtResource("9_xjvdf")
+texture_pressed = ExtResource("10_7b160")
+texture_hover = ExtResource("11_7q30x")
+texture_disabled = ExtResource("12_8k0mi")
+texture_focused = ExtResource("11_7q30x")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("13_1cu4x")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"
+
+[node name="Text" type="Label" parent="Menu/ButtonMenu/ButtonContainer/Profile"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -11.5
+offset_right = 134.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Профиль"
+
+[node name="Icon" type="TextureRect" parent="Menu/ButtonMenu/ButtonContainer/Profile"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 7.5
+offset_right = 50.0
+offset_bottom = 32.5
+mouse_filter = 2
+texture = ExtResource("15_6014c")
+expand_mode = 1
+
+[node name="Inventory" type="TextureButton" parent="Menu/ButtonMenu/ButtonContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture_normal = ExtResource("9_xjvdf")
+texture_pressed = ExtResource("10_7b160")
+texture_hover = ExtResource("11_7q30x")
+texture_disabled = ExtResource("12_8k0mi")
+texture_focused = ExtResource("11_7q30x")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("13_1cu4x")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"
+
+[node name="Text" type="Label" parent="Menu/ButtonMenu/ButtonContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -11.5
+offset_right = 150.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Инвентарь"
+
+[node name="Icon" type="TextureRect" parent="Menu/ButtonMenu/ButtonContainer/Inventory"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 7.5
+offset_right = 50.0
+offset_bottom = 32.5
+mouse_filter = 2
+texture = ExtResource("16_btwcw")
+expand_mode = 1
+
+[node name="Achivments" type="TextureButton" parent="Menu/ButtonMenu/ButtonContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture_normal = ExtResource("9_xjvdf")
+texture_pressed = ExtResource("10_7b160")
+texture_hover = ExtResource("11_7q30x")
+texture_disabled = ExtResource("12_8k0mi")
+texture_focused = ExtResource("11_7q30x")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("13_1cu4x")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"
+
+[node name="Text" type="Label" parent="Menu/ButtonMenu/ButtonContainer/Achivments"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -11.5
+offset_right = 161.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Достижения"
+
+[node name="Icon" type="TextureRect" parent="Menu/ButtonMenu/ButtonContainer/Achivments"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 7.5
+offset_right = 50.0
+offset_bottom = 32.5
+mouse_filter = 2
+texture = ExtResource("17_fef5x")
+expand_mode = 1
+
+[node name="Settings" type="TextureButton" parent="Menu/ButtonMenu/ButtonContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture_normal = ExtResource("9_xjvdf")
+texture_pressed = ExtResource("10_7b160")
+texture_hover = ExtResource("11_7q30x")
+texture_disabled = ExtResource("12_8k0mi")
+texture_focused = ExtResource("11_7q30x")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("13_1cu4x")
+metadata/_custom_type_script = "uid://dd0sbqavuyqv"
+
+[node name="Text" type="Label" parent="Menu/ButtonMenu/ButtonContainer/Settings"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -11.5
+offset_right = 148.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Настройки"
+
+[node name="Icon" type="TextureRect" parent="Menu/ButtonMenu/ButtonContainer/Settings"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 7.5
+offset_right = 50.0
+offset_bottom = 32.5
+mouse_filter = 2
+texture = ExtResource("18_2oa54")
+expand_mode = 1
+
+[node name="GamePanel" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 363.0
+offset_top = 104.0
+offset_right = 1027.0
+offset_bottom = 581.0
+
+[node name="Panel" type="TextureRect" parent="GamePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_27ec4")
+
+[node name="PanelName" type="Label" parent="GamePanel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 29.0
+offset_right = 134.0
+offset_bottom = 63.0
+text = "ИГРЫ"
+label_settings = SubResource("LabelSettings_6py34")
+
+[node name="GameBox" type="VBoxContainer" parent="GamePanel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 126.0
+offset_right = 620.0
+offset_bottom = 426.0
+
+[node name="GamePreview" parent="GamePanel/GameBox" instance=ExtResource("22_xxe1g")]
+layout_mode = 2
+texture = ExtResource("23_8tx4l")
+game_name = "Дурак"
+game_info = "Классическая игра на логику
+и удачу для 2-6 игроков."
+game_path = "res://mechanics/tabletop/games/fool/game.tscn"
+
+[node name="ProfilePanel" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 363.0
+offset_top = 104.0
+offset_right = 1027.0
+offset_bottom = 581.0
+
+[node name="Panel" type="TextureRect" parent="ProfilePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_27ec4")
+
+[node name="PanelName" type="Label" parent="ProfilePanel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 42.0
+offset_right = 134.0
+offset_bottom = 76.0
+text = "ПРОФИЛЬ"
+label_settings = SubResource("LabelSettings_6py34")
+
+[node name="InventoryPanel" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 363.0
+offset_top = 104.0
+offset_right = 1027.0
+offset_bottom = 581.0
+
+[node name="Panel" type="TextureRect" parent="InventoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_27ec4")
+
+[node name="PanelName" type="Label" parent="InventoryPanel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 42.0
+offset_right = 134.0
+offset_bottom = 76.0
+text = "ИНВЕНТАРЬ"
+label_settings = SubResource("LabelSettings_6py34")
+
+[node name="AchivmentsPanel" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 363.0
+offset_top = 104.0
+offset_right = 1027.0
+offset_bottom = 581.0
+
+[node name="Panel" type="TextureRect" parent="AchivmentsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_27ec4")
+
+[node name="PanelName" type="Label" parent="AchivmentsPanel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 42.0
+offset_right = 134.0
+offset_bottom = 76.0
+text = "ДОСТИЖЕНИЯ"
+label_settings = SubResource("LabelSettings_6py34")
+
+[node name="SettingsPanel" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 363.0
+offset_top = 104.0
+offset_right = 1027.0
+offset_bottom = 581.0
+
+[node name="Panel" type="TextureRect" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_27ec4")
+
+[node name="PanelName" type="Label" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 42.0
+offset_right = 134.0
+offset_bottom = 76.0
+text = "Настройки"
+label_settings = SubResource("LabelSettings_6py34")

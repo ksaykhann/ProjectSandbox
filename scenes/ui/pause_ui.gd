@@ -13,6 +13,4 @@ func exit() -> void:
 	
 
 func continue_game() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	get_tree().paused = false
 	queue_free()
